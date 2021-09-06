@@ -10,8 +10,7 @@ class AppSecEventsTestCase(TracerTestCase):
             self.assertEqual(
                 context.get_required_context(),
                 context.Context_0_1_0(
-                    service_stack=mock.ANY,
-                    tracer=mock.ANY,
+                    library=mock.ANY,
                     trace=context.Trace_0_1_0(span.trace_id),
                     span=context.Span_0_1_0(span.span_id),
                     service=context.Service_0_1_0(name="test"),

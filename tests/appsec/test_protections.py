@@ -21,4 +21,4 @@ def test_sqreen_library_overtime(appsec, tracer):
 def test_sqreen_library_attack_event(appsec, appsec_dummy_writer, tracer):
     with tracer.trace("test") as span:
         appsec.process_request(span, headers={"user-agent": "Arachni/v1"})
-    assert appsec_dummy_writer.events[0].event_type == "appsec.threat.attack"
+    assert appsec_dummy_writer.events[0].event_type == "appsec"
