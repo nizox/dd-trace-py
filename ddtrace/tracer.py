@@ -223,6 +223,9 @@ class Tracer(object):
 
         self._rc = RemoteConfigWorker()
         self._rc._client.register_product("FEATURES", self._reload_features)
+        self._rc._client.register_product("ASM_DD", self._reload_data)
+        self._rc._client.register_product("ASM", self._reload_data)
+        self._rc._client.register_product("ASM_DATA", self._reload_data)
         self._rc.start()
 
         self._hooks = _hooks.Hooks()
@@ -232,6 +235,11 @@ class Tracer(object):
         self._shutdown_lock = RLock()
 
         self._new_process = False
+
+    def _reload_data(self, metadata, data):
+        log.info(
+            "Reloading %r:\n%r", metadata, data
+        )
 
     def _reload_features(self, metadata, features):
         log.info(

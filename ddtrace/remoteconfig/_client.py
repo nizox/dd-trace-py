@@ -196,6 +196,7 @@ class Client(object):
                 is_tracer=True,
                 client_tracer=self._client_tracer,
                 state=state,
+                capabilities=[0b01110000],
             )
         )
 
